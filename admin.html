@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head><title>Admin Togel</title></head>
+<body>
+  <h2>Set Hasil Togel</h2>
+  <input type="text" id="hasil" placeholder="Misal: 1234">
+  <button onclick="simpan()">Simpan</button>
+  <p id="info"></p>
+
+  <script>
+    function simpan() {
+      const hasil = document.getElementById("hasil").value;
+      const json = JSON.stringify({hasil});
+      const blob = new Blob([json], {type: "application/json"});
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = "hasil.json";
+      a.click();
+      document.getElementById("info").innerText = "hasil.json berhasil diunduh. Upload ke GitHub!";
+    }
+  </script>
+</body>
+</html>
